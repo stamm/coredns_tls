@@ -1,0 +1,14 @@
+. {
+	reload 5s
+	forward . tls://1.1.1.1 {
+		tls_servername tls.cloudflare-dns.com
+	}
+	log
+	errors
+	cache 120 {
+		success 1000
+		denial 1000
+		prefetch 100 30s 50%
+	}
+}
+
